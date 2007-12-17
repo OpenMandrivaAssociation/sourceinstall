@@ -10,7 +10,6 @@ Source0:	ftp://ftp.gnu.org/gnu/sourceinstall/sourceinstall-0.4.tar.bz2
 URL:            http://www.gnu.org/software/sourceinstall 
 
 Group:          Development/Other
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
 License:        GPL
 
 BuildRequires:  expect 
