@@ -1,6 +1,6 @@
 %define name    sourceinstall
 %define version 0.4
-%define release %mkrel 5
+%define release %mkrel 6
 
 Name:           %{name} 
 Summary:        The GNU Source Installer
