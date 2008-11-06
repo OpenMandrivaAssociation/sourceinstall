@@ -1,33 +1,13 @@
-%define name    sourceinstall
-%define version 0.4
-%define release %mkrel 6
-
-Name:           %{name} 
-Summary:        The GNU Source Installer
-Version:        %{version} 
-Release:        %release 
-Source0:	ftp://ftp.gnu.org/gnu/sourceinstall/sourceinstall-0.4.tar.bz2
-URL:            http://www.gnu.org/software/sourceinstall 
-
-Group:          Development/Other
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
-License:        GPL
-
-BuildRequires:  expect 
-BuildRequires:  tk 
-BuildRequires:  tcl
-
-Requires:       expect 
-BuildRequires:  zip 
-BuildRequires:  unzip 
-BuildRequires:  bzip2 
-BuildRequires:  ncompress 
-BuildRequires:  gzip 
-BuildRequires:  tar
- 
-Requires(post):  info-install
-Requires(preun): info-install
-BuildArch: 	noarch
+Name:		sourceinstall 
+Summary:	The GNU Source Installer
+Version:	2.5
+Release:	%{mkrel 1}
+Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
+URL:		http://www.gnu.org/software/sourceinstall 
+Group:		Development/Other
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot 
+License:	GPLv3+
+BuildRequires:	libsrcinst-devel
 
 %description
 For an experienced user, this sofware provides a way to centralize source
@@ -47,42 +27,24 @@ becomes:
    - add it using the installer
 
 %prep 
-%setup -q -n sourceinstall
+%setup -q
 
 %build 
-#%configure --prefix=%{_prefix}
-%configure2_5x --prefix=%{_prefix}
+%configure2_5x
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall
+rm -rf %{buildroot}
+%makeinstall_std
+
+%find_lang %{name}
 
 %clean 
-rm -rf $RPM_BUILD_ROOT 
+rm -rf %{buildroot}
 
-%files 
+%files -f %{name}.lang
 %defattr(-,root,root,0755) 
-%doc README NEWS COPYING AUTHORS 
+%doc AUTHORS ChangeLog
 %{_mandir}/man1/sourceinstall*
-%{_infodir}/sourceinstall.info*
 %{_bindir}/sourceinstall
-%{_bindir}/sourceinstall.tcl
-
-%post
-# alternative way of putting this (instead of prereq)
-#if [ -x /sbin/install-info ]; then
-#  /sbin/install-info %{_infodir}/sourceinstall.info*
-#fi
-install-info %{_infodir}/sourceinstall.info*
-
-
-%preun
-if [ -x /sbin/install-info ]; then
-  /sbin/install-info --delete %{_infodir}/sourceinstall.info*
-fi
-
-#%postun
-#rm -rf %{_infodir}/sourceinstall.info*
-#/sbin/install-info --delete  %{_infodir}/sourceinstall.info*
 
