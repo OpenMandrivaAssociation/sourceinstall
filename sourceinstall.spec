@@ -48,3 +48,41 @@ rm -rf %{buildroot}
 %{_mandir}/man1/sourceinstall*
 %{_bindir}/sourceinstall
 
+
+
+%changelog
+* Sun Sep 20 2009 Thierry Vignaud <tvignaud@mandriva.com> 2.5-2mdv2010.0
++ Revision: 445165
+- rebuild
+
+* Thu Nov 06 2008 Adam Williamson <awilliamson@mandriva.org> 2.5-1mdv2009.1
++ Revision: 300350
+- no info page any more
+- no tcl stuff any more
+- now builds against libsrcinst which has all the main buildrequires
+- new release 2.5
+- spec clean
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Thu Dec 29 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.4-5mdk
+- Add buildRequires
+
+* Sun Sep 18 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.4-4mdk
+- Really fix PreReq thanks davide
+
+* Sat Sep 17 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.4-3mdk
+- Fix PreReq
+
+* Fri Jul 29 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.4-2mdk
+- Fix BuildRequires
+
+* Wed Jul 20 2005 Marc Lijour <mlijour@mandriva.com> 0.4-1mdk
+- Initial release as RPM
+
