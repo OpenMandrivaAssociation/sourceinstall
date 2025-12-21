@@ -7,6 +7,11 @@ URL:		https://www.gnu.org/software/sourceinstall
 Group:		Development/Other
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot 
 License:	GPLv3+
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libsrcinst-devel
 
 %description
